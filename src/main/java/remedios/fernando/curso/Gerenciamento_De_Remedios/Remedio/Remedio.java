@@ -33,6 +33,7 @@ public class Remedio {
 		this.quantidade = dados.quantidade();
 		this.validade = dados.validade();
 		this.laboratorio = dados.laboratorio();
+		this.ativo = true;
 	}
 	
 	@Id 
@@ -49,10 +50,17 @@ public class Remedio {
 	
 	@Enumerated(EnumType.STRING)
 	private Laboratorio laboratorio;
+	
+	private Boolean ativo;
 
 	public void atualizarInformecoes(@Valid DadosAtualizarRemedio dados) {
 		Optional.ofNullable(dados.nome()).ifPresent(nome -> this.nome = nome);
         Optional.ofNullable(dados.via()).ifPresent(via -> this.via = via);
         Optional.ofNullable(dados.laboratorio()).ifPresent(laboratorio -> this.laboratorio = laboratorio);
+	}
+
+	public void inativar() {
+		// TODO Auto-generated method stub
+		this.ativo = false;
 	}
 }
