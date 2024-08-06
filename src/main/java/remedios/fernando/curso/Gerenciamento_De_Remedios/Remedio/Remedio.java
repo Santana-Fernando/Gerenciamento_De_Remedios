@@ -60,7 +60,10 @@ public class Remedio {
 	}
 
 	public void inativar() {
-		// TODO Auto-generated method stub
 		this.ativo = false;
+	}
+
+	public void ativar() {
+		this.ativo = true;
 	}
 }
