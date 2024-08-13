@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.Valid;
 import remedios.fernando.curso.Gerenciamento_De_Remedios.Usuario.DadosAutenticacao;
 import remedios.fernando.curso.Gerenciamento_De_Remedios.Usuario.Usuario;
+import remedios.fernando.curso.Gerenciamento_De_Remedios.infra.DadosTokenJWT;
 import remedios.fernando.curso.Gerenciamento_De_Remedios.infra.TokenService;
 
 @RestController
@@ -29,6 +30,8 @@ public class AutenticacaoController {
 		var token = new UsernamePasswordAuthenticationToken(dados.login(), dados.senha());
 		var authentication = manager.authenticate(token);
 		
-		return ResponseEntity.ok(tokenService.gerarToken((Usuario) authentication.getPrincipal()));
+		var tokenJWT = tokenService.gerarToken((Usuario) authentication.getPrincipal());
+		
+		return ResponseEntity.ok(new DadosTokenJWT(tokenJWT));
 	}
 }
