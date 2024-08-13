@@ -1,4 +1,4 @@
-package usuarios;
+package remedios.fernando.curso.Gerenciamento_De_Remedios.Usuario;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,8 +13,8 @@ public class AutenticacaoService implements UserDetailsService {
 	private UsuarioRepository repository;
 	
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		return repository.findByLogin(username);
+	public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
+		return repository.findByLogin(login); 
 	}
 
 }
